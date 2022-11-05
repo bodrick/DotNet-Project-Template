@@ -1,0 +1,27 @@
+<Project>
+  <ItemGroup Label="Package References">
+    <PackageReference Include="GitVersion.MsBuild" Version="5.10.3" PrivateAssets="all" />
+  </ItemGroup>
+
+  <PropertyGroup Label="Package">
+    <Authors></Authors>
+    <Company></Company>
+    <CurrentYear>$([System.DateTime]::Now.ToString(yyyy))</CurrentYear>
+    <Copyright>Copyright © $(CurrentYear)</Copyright>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryType>git</RepositoryType>
+    <DisableGitVersionTask Condition="'$(Configuration)' == 'Debug'">true</DisableGitVersionTask>
+
+    <PackageIcon>dotnet-logo.png</PackageIcon>
+    <PackageIconFullPath>$(MSBuildThisFileDirectory)Assets\dotnet-logo.png</PackageIconFullPath>
+    <EnablePackageValidation>true</EnablePackageValidation>
+    <!-- <NoWarn>$(NoWarn);NU1504;NU1505;NU1701</NoWarn> -->
+  </PropertyGroup>
+
+  <!-- Reproducible Builds: https://www.meziantou.net/creating-reproducible-build-in-dotnet.htm -->
+  <ItemGroup Label="Reproducible Builds">
+    <PackageReference Include="DotNet.ReproducibleBuilds" Version="1.1.1" PrivateAssets="All" />
+  </ItemGroup>
+
+</Project>

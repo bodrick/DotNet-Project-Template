@@ -1,0 +1,17 @@
+<Project>
+
+  <PropertyGroup>
+    <PackageOutputPath>$(ArtifactsPackagesDir)</PackageOutputPath>
+  </PropertyGroup>
+
+  <!--
+    Include package icon in the package.
+  -->
+  <ItemGroup Condition="'$(PackageIcon)' != '' and '$(IsPackable)' == 'true'">
+    <None Include="$(PackageIconFullPath)" Pack="true" PackagePath="$(PackageIcon)" Visible="false" />
+  </ItemGroup>
+
+  <Target Name="Versioning" AfterTargets="GetVersion">
+    <Message Text="GitVersion_FullSemVer: $(GitVersion_FullSemVer)"/>
+  </Target>
+</Project>
